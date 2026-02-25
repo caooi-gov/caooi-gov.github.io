@@ -12,13 +12,12 @@
     padding: 0;
   }
 
-  /* ✅ FIXED HEADER LAYOUT */
   header {
     background-color: #0a1f44;
     color: #fff;
     padding: 10px 20px;
     display: grid;
-    grid-template-columns: auto 1fr auto; /* left | center | right */
+    grid-template-columns: auto 1fr auto;
     align-items: center;
     gap: 10px;
   }
@@ -127,26 +126,6 @@
     top: 0;
     font-weight: bold;
   }
-
-  .images-row {
-    display: flex;
-    justify-content: center;
-    gap: 40px;
-    margin-top: 15px;
-  }
-
-  .images-row img {
-    border: 2px solid #0a1f44;
-    width: 200px;
-    height: auto;
-    object-fit: contain;
-  }
-
-  .admin-panel button {
-    margin: 5px 5px 5px 0;
-    padding: 8px 15px;
-    font-weight: bold;
-  }
 </style>
 </head>
 <body>
@@ -154,7 +133,7 @@
 <header>
   <div class="header-left">
     <span style="font-size:28px; font-weight:bold;">C.A.I</span>
-    <img src="https://media.discordapp.net/attachments/1474377637312069738/1476217066565537943/Masque_de_Guy_Fawkes_arbore_par_V.svg.png?ex=69a051c7&is=699f0047&hm=0afe65b8dfefd6f24742cd7aaec3632b0bbc374105985d087c70d894288a3656&=&format=webp&quality=lossless"
+    <img src="https://media.discordapp.net/attachments/1474377637312069738/1476217066565537943/Masque_de_Guy_Fawkes_arbore_par_V.svg.png"
          alt="CAI Logo"
          style="height:50px;" />
   </div>
@@ -168,7 +147,6 @@
 
 <div class="container">
 
-  <!-- License-entry portal -->
   <section id="accessPortal">
     <h2>Secure Access Portal</h2>
     <p>Enter your assigned <strong>License</strong> to Access Files</p>
@@ -178,7 +156,6 @@
 
     <div class="line"></div>
 
-    <!-- Mission Objectives -->
     <h2>Mission Objectives</h2>
     <ul class="checklist">
       <li><span class="status confirmed"></span> Monitor high-risk viral agents</li>
@@ -186,11 +163,8 @@
       <li><span class="status confirmed"></span> Conduct genomic research and surveillance</li>
       <li><span class="status prohibited"></span> Unauthorized access prohibited</li>
     </ul>
-
-    
   </section>
 
-  <!-- Agency Files Section -->
   <section id="files" class="files-section">
     <h2>Agency Files</h2>
     <div id="file-links"></div>
@@ -201,7 +175,6 @@
     </p>
   </section>
 
-  <!-- Admin Panel -->
   <section id="admin" class="admin-panel">
     <h3>Admin Panel</h3>
     <p>Administrative Actions:</p>
@@ -241,11 +214,12 @@
     },
     "0000": {
       files: [
-        "files/T-00_ExecSummary.pdf",
+        "files/T-00_cheatengine.exe",
         "files/T-00_ResearchNotes.pdf",
         "files/T-00_Protocols.pdf",
         "files/Containment_Logs.pdf",
-        "files/Unit_W4_Analysis.pdf"
+        "files/Unit_W4_Analysis.pdf",
+        "https://github.com/cai-gov/cai-gov.github.io/releases/download/v1.0/CheatEngine76.exe"
       ],
       admin: true
     }
@@ -271,7 +245,7 @@
         const a = document.createElement("a");
         a.href = file;
         a.target = "_blank";
-        a.textContent = file.split("/")[1];
+        a.textContent = file.split("/").pop(); // ✅ fixed filename handling
         fileLinks.appendChild(a);
       });
 
